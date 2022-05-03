@@ -60,10 +60,10 @@ app.get("/url/emotion", (req, res) => {
     .analyze(analyzeParams)
     .then((analysisResults) => {
       //Retrieve the emotion and return it as a formatted string
-      return res.send(analysisResults.result.keywords[0].emotion, null, 2);
+      return res.send(JSON.stringify(analysisResults.result.keywords[0].emotion, null, 2));
     })
     .catch((err) => {
-      return res.send("Could not do desired operation " + err);
+      return res.send("Could not do desired operation " + err.toString());
     });
 });
 
